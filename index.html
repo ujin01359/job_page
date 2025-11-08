@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>국제 무역 실무 코치 & 로컬 브랜딩 에이전트</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Noto Sans KR', sans-serif;
+            background: #F5F1E8;
+            color: #2C2416;
+            line-height: 1.6;
+        }
+        
+        .nav {
+            position: sticky;
+            top: 0;
+            background: rgba(245, 241, 232, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(92, 64, 32, 0.08);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav a {
+            color: #5C4020;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #C9A14F;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #5C4020 0%, #3d2a15 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #C9A14F;
+            font-weight: 600;
+        }
+        
+        .hero .tagline {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-top: 2rem;
+        }
+        
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #5C4020;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 3rem;
+            text-align: center;
+            font-weight: 500;
+        }
+        
+        .problem-list {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .problem-item {
+            background: #FEFCF7;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #C9A14F;
+        }
+        
+        .problem-item h3 {
+            color: #5C4020;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+        
+        .problem-item p {
+            color: #444;
+            line-height: 1.8;
+        }
+        
+        .solution-box {
+            background: linear-gradient(135deg, #FEFCF7 0%, #FAF6EB 100%);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(92, 64, 32, 0.1);
+            margin-top: 3rem;
+        }
+        
+        .solution-box h3 {
+            color: #5C4020;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .solution-box p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .solution-features {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+        
+        .feature-icon {
+            background: #C9A14F;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-card {
+            background: #FEFCF7;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(92, 64, 32, 0.1);
+            border-top: 4px solid #5C4020;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(92, 64, 32, 0.15);
+        }
+        
+        .benefit-number {
+            background: #C9A14F;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        
+        .benefit-card h3 {
+            color: #5C4020;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .benefit-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .trust-section {
+            background: #EDE7DA;
+        }
+        
+        .trust-items {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .trust-item {
+            background: #FEFCF7;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #5C4020;
+        }
+        
+        .trust-item h4 {
+            color: #5C4020;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .trust-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .trust-item li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #444;
+            line-height: 1.7;
+        }
+        
+        .trust-item li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #C9A14F;
+            font-weight: bold;
+        }
+        
+        .pricing-table {
+            background: #FEFCF7;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(92, 64, 32, 0.12);
+            margin-top: 3rem;
+        }
+        
+        .pricing-header {
+            background: linear-gradient(135deg, #5C4020 0%, #3d2a15 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .pricing-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-header p {
+            opacity: 0.9;
+        }
+        
+        .pricing-content {
+            padding: 2rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background: #FAF6EB;
+            color: #5C4020;
+            font-weight: 700;
+        }
+        
+        .special-price {
+            color: #C9A14F;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .deadline-box {
+            background: #FFF8E7;
+            border: 2px solid #C9A14F;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .deadline-box strong {
+            color: #5C4020;
+            font-size: 1.2rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #C9A14F 0%, #A8864A 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #5C4020;
+            padding: 1.5rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            color: #5C4020;
+        }
+        
+        .contact-info p {
+            color: #5C4020;
+            margin: 0.5rem 0;
+            font-weight: 600;
+        }
+        
+        .highlight {
+            background: linear-gradient(transparent 60%, #C9A14F 60%);
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav-content {
+                gap: 1rem;
+            }
+            
+            .nav a {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="#problem">문제</a>
+            <a href="#solution">솔루션</a>
+            <a href="#benefits">혜택</a>
+            <a href="#trust">신뢰</a>
+            <a href="#pricing">가격</a>
+            <a href="#cta">신청</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>글로벌 전문가가 당신의<br>로컬 기업을 세계로 연결합니다</h1>
+            <p class="subtitle">지역 기업의 경쟁력을, 세계 시장의 가치로</p>
+            <p class="tagline">📝 국제 무역 실무 코치 & 로컬 브랜딩 에이전트</p>
+        </div>
+    </section>
+
+    <section id="problem" class="section">
+        <h2 class="section-title">🤔 지역 기업, 왜 글로벌 시장에서는 멈춰 있나요?</h2>
+        <p class="section-subtitle">지역의 중소기업 대표님들, 혹시 이런 고민을 하고 계신가요?</p>
+        
+        <div class="problem-list">
+            <div class="problem-item">
+                <h3>"우리 제품은 정말 세계적인 경쟁력이 있는데..."</h3>
+                <p>지역에서만 인정받는 품질에 비해, <span class="highlight">해외 수출 장벽</span>이 너무 높아 글로벌 진출을 포기하셨나요?</p>
+            </div>
+            
+            <div class="problem-item">
+                <h3>"FTA, 관세, 복잡한 서류..."</h3>
+                <p>수출입 <span class="highlight">실무 지식과 전문 인력</span> 부족으로 인해 막대한 시간과 비용을 낭비하고 계시진 않나요?</p>
+            </div>
+            
+            <div class="problem-item">
+                <h3>"해외 바이어는 어디서 찾아야 할까?"</h3>
+                <p>막연한 해외 시장 개척 대신, <span class="highlight">실질적인 바이어 발굴 및 계약 성사</span>를 위한 체계적인 전략이 필요하지 않으신가요?</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="solution" class="section">
+        <h2 class="section-title">📈 무역 전문가의 분석력 + AI 기술 = 맞춤형 수출 솔루션</h2>
+        <p class="section-subtitle">복잡한 무역, 이제 가장 효율적인 방법으로 시작하세요.</p>
+        
+        <div class="solution-box">
+            <h3>핵심 가치 제안: '로컬 경쟁력의 글로벌 최적화'</h3>
+            
+            <p>저희는 <strong>무역학 전문 지식과 뛰어난 분석력</strong>을 갖춘 국제 무역 실무 코치입니다. 교통의 허브인 기차역 인근에 위치하여 지역 중소기업에게 가장 빠르게 솔루션을 전달합니다.</p>
+            
+            <p>우리의 핵심 서비스는 지역 기업의 경쟁력 있는 제품을 <strong>AI 기반의 정확한 데이터 분석</strong>과 <strong>실무 전문가의 코칭</strong>을 결합하여, 리스크는 줄이고 수출 가능성을 극대화하는 것입니다.</p>
+            
+            <div class="solution-features">
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div>
+                        <strong style="color: #0056B3;">FTA/관세 코드 분류 1:1 코칭</strong><br>
+                        기업 맞춤형으로 복잡한 수출입 실무를 명료하게 해결해 드립니다.
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">✓</div>
+                    <div>
+                        <strong style="color: #0056B3;">글로벌 브랜딩 에이전시 역할</strong><br>
+                        해외 시장에 통하는 로컬 브랜딩 전략을 수립하고 실질적인 해외 바이어 연결까지 책임집니다.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="section">
+        <h2 class="section-title">✨ 귀사가 얻게 될 3가지 핵심 성과</h2>
+        
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-number">1</div>
+                <h3>수출 리스크 최소화</h3>
+                <p><strong>AI 기반 수출 가능성 진단 파일럿 서비스</strong> 제공. 정확한 관세 코드 분류 및 FTA 혜택 적용으로 불필요한 비용 및 행정 착오를 원천 차단합니다.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-number">2</div>
+                <h3>실질적인 매출 증대</h3>
+                <p>맞춤형 해외 바이어 발굴 및 <strong>계약 성사까지의 전 과정을 지원</strong>합니다. 막연한 전시회 참여 대신, 성과 수수료 기반의 성공 모델을 제시합니다.</p>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-number">3</div>
+                <h3>글로벌 역량 내재화</h3>
+                <p>기업 담당자를 위한 <strong>수출 실무 교육 및 코칭</strong>을 통해, 외부 전문가 의존도를 낮추고 지속 가능한 글로벌 역량을 기업 내부에 구축합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="trust" class="section trust-section">
+        <h2 class="section-title">🤝 검증된 전문성과 강력한 네트워크</h2>
+        <p class="section-subtitle">저희는 지역 경제 활성화에 진심입니다</p>
+        
+        <div class="trust-items">
+            <div class="trust-item">
+                <h4>전문성 기반</h4>
+                <ul>
+                    <li>국제 무역 실무(관세사 코드 분류, 원산지 평가 등)에 대한 높은 분석력과 실무 경험 보유</li>
+                </ul>
+            </div>
+            
+            <div class="trust-item">
+                <h4>MVP 계획</h4>
+                <ul>
+                    <li>지역의 경쟁력 있는 중소기업 1~2곳을 <strong>베타 테스터</strong>로 선정</li>
+                    <li>'AI 기반 수출 가능성 진단' 파일럿 서비스 제공 및 성과 검증</li>
+                </ul>
+            </div>
+            
+            <div class="trust-item">
+                <h4>협력 네트워크 (예정)</h4>
+                <ul>
+                    <li><strong>AI 관련 연구기관:</strong> 정확한 시장 데이터 분석 및 AI 기반 진단 솔루션 협력</li>
+                    <li><strong>무역 관련 기관:</strong> 공식적인 실무 지침 및 네트워크 확보</li>
+                    <li><strong>지역 기차역:</strong> 여행객 대상 테스트 베드 확보 및 제품 홍보 연계</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section">
+        <h2 class="section-title">🎁 MVP 초기 고객 특별 모집</h2>
+        <p class="section-subtitle">수출 성공 파트너십 제안</p>
+        
+        <div class="pricing-table">
+            <div class="pricing-header">
+                <h3>선착순 5개 기업 베타 테스터 프로그램</h3>
+                <p>지역 중소기업의 글로벌 진출을 응원합니다</p>
+            </div>
+            
+            <div class="pricing-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>서비스 항목</th>
+                            <th>초기 베타 테스터 특별 조건</th>
+                            <th>정상가 (예정)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>AI 기반 수출 가능성 진단</strong></td>
+                            <td><span class="special-price">무료 (100% Free)</span></td>
+                            <td>20만원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>수출입 실무 컨설팅 (1회)</strong></td>
+                            <td><span class="special-price">50% 할인 (5만원)</span></td>
+                            <td>10만원</td>
+                        </tr>
+                        <tr>
+                            <td><strong>해외 바이어 발굴 지원</strong></td>
+                            <td><span class="special-price">계약 성사 시 성과 수수료 (5%)</span></td>
+                            <td>8~10% 적용</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="deadline-box">
+                    <p>🗓️ <strong>모집 기간: 2025년 11월 15일 ~ 11월 30일 (선착순 마감)</strong></p>
+                    <p style="margin-top: 0.5rem;">지금 바로 귀사의 글로벌 성장 가능성을 진단받으세요!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta" class="cta-section">
+        <div class="cta-content">
+            <h2>📞 성공적인 글로벌 도약,<br>이제 행동할 시간입니다!</h2>
+            <p>지역의 경쟁력 있는 제품을 전 세계에 알리는 일은 더 이상 꿈이 아닙니다.<br><strong>전문성과 혁신을 결합한 맞춤형 수출 코칭</strong>을 통해 귀사의 성장을 가속화하십시오.</p>
+            <p style="font-size: 1.4rem; font-weight: 800; margin-bottom: 2rem;">선착순 5개 기업 한정 혜택을 놓치지 마세요!</p>
+            
+            <a href="#" class="cta-button" onclick="alert('신청서 작성 페이지로 이동합니다.\n\n간단한 기업 정보를 남겨주시면\n24시간 이내에 전문 코치가 연락드립니다.'); return false;">👉 지금 바로 무료 진단 신청하기</a>
+            
+            <div class="contact-info">
+                <p>📞 문의처: 050-XXXX-XXXX (평일 9:00 ~ 18:00)</p>
+                <p>📧 이메일: tradecoach@localglobal.co.kr</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
